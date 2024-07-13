@@ -5,6 +5,7 @@ export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://4-client-2.vercel.app/",
+    mode: "no-cors",
   }),
   tagTypes: ["product"],
   endpoints: (builder) => ({
@@ -16,7 +17,6 @@ export const baseApi = createApi({
         //   params.append(Object.keys(query)[0], query.Object.keys(query)[0]);
         //   console.log(Object.keys(query)[0], query[0]);
         // }
-        console.log(params);
         return {
           url: "/products",
           method: "GET",
