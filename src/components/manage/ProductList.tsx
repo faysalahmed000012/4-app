@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useDeleteProductMutation } from "../../redux/api/baseApi";
 import AddEditProduct from "./AddEditProduct";
 

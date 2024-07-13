@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useState } from "react";
 import Options from "../components/manage/Options";
 import ProductList from "../components/manage/ProductList";

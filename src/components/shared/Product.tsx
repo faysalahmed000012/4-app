@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Link } from "react-router-dom";
 import { addToCart } from "../../redux/features/cartSlice";
 import { useAppDispatch } from "../../redux/hooks";

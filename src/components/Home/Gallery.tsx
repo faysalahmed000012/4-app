@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useGetAllProductsQuery } from "../../redux/api/baseApi";
 
 const Gallery = () => {

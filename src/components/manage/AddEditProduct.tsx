@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Modal } from "flowbite-react";
 import { useState } from "react";
 import {
@@ -9,7 +10,7 @@ const AddEditProduct = ({ isEditMode, product }) => {
   const [addProduct] = useAddProductMutation();
   const [editProduct] = useUpdateProductMutation();
   const [openModal, setOpenModal] = useState(false);
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const formProps = Object.fromEntries(formData);

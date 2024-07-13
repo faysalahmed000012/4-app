@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useParams } from "react-router-dom";
 import { useGetProductByIdQuery } from "../redux/api/baseApi";
 

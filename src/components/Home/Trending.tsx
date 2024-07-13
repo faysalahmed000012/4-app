@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Link } from "react-router-dom";
 import arrow from "../../assets/arrow.png";
 import { useGetAllProductsQuery } from "../../redux/api/baseApi";

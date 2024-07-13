@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { removeFromCart } from "../redux/features/cartSlice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 

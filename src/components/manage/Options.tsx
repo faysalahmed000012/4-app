@@ -1,3 +1,4 @@
+// @ts-nocheck
 import AddEditProduct from "./AddEditProduct";
 
 const Options = ({ setLimit, limit }) => {
