@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { useState } from "react";
 import Options from "../components/manage/Options";
 import ProductList from "../components/manage/ProductList";
@@ -10,7 +9,7 @@ const Management = () => {
   return (
     <div>
       <h1 className="text-3xl">Manage Products</h1>
-      <Options setLimit={setLimit} limit={limit} />
+      <Options setLimit={setLimit} />
       <div className="mt-6">
         {data?.data?.products?.map((product) => (
           <ProductList key={product._id} product={product} />

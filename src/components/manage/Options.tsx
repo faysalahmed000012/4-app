@@ -1,7 +1,6 @@
-// @ts-nocheck
 import AddEditProduct from "./AddEditProduct";
 
-const Options = ({ setLimit, limit }) => {
+const Options = ({ setLimit }) => {
   return (
     <div className="flex items-center justify-between my-3">
       <div>
@@ -17,7 +16,8 @@ const Options = ({ setLimit, limit }) => {
             className="bg-primary cursor-pointer border-none text-sm rounded-lg block w-full p-2.5 "
           >
             <option selected>Sort By</option>
-            <option value="price">Price</option>
+            <option value="price low to high">Price low to high</option>
+            <option value="price high to low">Price high to low</option>
             <option value="stock">Stock</option>
             <option value="name(a-z)">Name (a - z)</option>
             <option value="name(z-a)">Name (z - a)</option>
@@ -39,9 +39,8 @@ const Options = ({ setLimit, limit }) => {
             id="countries"
             className="bg-primary  cursor-pointer border-none text-sm rounded-lg block w-full p-2.5"
           >
-            <option selected>Filter</option>
-            <option value="inStock">In Stock</option>
-            <option value="outStock">Out of Stock</option>
+            <option selected>Category</option>
+            <option value="plant">Plant</option>
           </select>
         </form>
       </div>

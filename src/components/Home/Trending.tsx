@@ -18,8 +18,8 @@ const Trending = () => {
         ))}
       </div>
       <Link to={"/products"}>
-        <button className="rounded-full w-32 h-12 bg-primary block ms-auto font-semibold hover:bg-transparent hover:border hover:border-primary  hover:transition-all hover:duration-300">
-          <div className="flex items-center justify-center gap-2">
+        <button className="rounded-full w-32 h-12 bg-primary block ms-auto font-semibold hover:bg-transparent hover:border hover:border-primary  hover:transition-all hover:duration-300 ">
+          <div className="flex items-center justify-center gap-2 hover:translate-x-2 hover:transition-all hover:duration-300">
             <p> See More</p>
             <img className="h-5" src={arrow} alt="" />
           </div>

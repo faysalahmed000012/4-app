@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { useState } from "react";
 import Options from "../components/manage/Options";
 import Product from "../components/shared/Product";
@@ -10,7 +9,7 @@ const Products = () => {
   return (
     <div>
       <h1 className="text-4xl font-semibold my-6">All Products</h1>
-      <Options setLimit={setLimit} limit={limit} />
+      <Options setLimit={setLimit} />
       <div className="grid lg:grid-cols-4 gap-6">
         {data?.data?.products?.map((product) => (
           <div className="mx-auto" key={product._id}>

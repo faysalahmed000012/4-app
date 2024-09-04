@@ -3,7 +3,7 @@ import { useDeleteProductMutation } from "../../redux/api/baseApi";
 import AddEditProduct from "./AddEditProduct";
 
 const ProductList = ({ product }) => {
-  const { name, images, price, quantity } = product;
+  const { name, images, price, category } = product;
   const [deleteProduct] = useDeleteProductMutation();
 
   const handleDelete = () => {
@@ -17,7 +17,7 @@ const ProductList = ({ product }) => {
       <img className="w-8 h-8 ms-5 me-4" src={images[0]} alt={name} />
       <p className="flex-1">{name}</p>
       <p className="flex-1">{price.toFixed(2)}</p>
-      <p className="flex-1">{quantity}</p>
+      <p className="flex-1">{category}</p>
       <div className="flex-1 flex gap-3 items-center justify-center">
         <AddEditProduct isEditMode={true} product={product} />
         <button

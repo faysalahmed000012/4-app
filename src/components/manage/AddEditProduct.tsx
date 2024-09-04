@@ -71,7 +71,7 @@ const AddEditProduct = ({ isEditMode, product }) => {
       ) : (
         <button
           onClick={() => setOpenModal(true)}
-          className="bg-green-500 w-32 h-16 rounded-lg"
+          className="bg-green-500 px-6 py-3 text-white rounded-lg font-semibold"
         >
           Add Product
         </button>
@@ -120,7 +120,7 @@ const AddEditProduct = ({ isEditMode, product }) => {
                     name="price"
                     id="price"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
-                    placeholder="$2999"
+                    placeholder="Price"
                     required={true}
                   />
                 </div>
@@ -154,7 +154,7 @@ const AddEditProduct = ({ isEditMode, product }) => {
                     name="quantity"
                     id="quantity"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
-                    placeholder="29"
+                    placeholder="Quantity"
                     required={true}
                   />
                 </div>
@@ -194,7 +194,7 @@ const AddEditProduct = ({ isEditMode, product }) => {
               </div>
               <button
                 type="submit"
-                className="text-black inline-flex items-center bg-primary   focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center "
+                className="mt-2 inline-flex items-center bg-primary focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center text-white hover:border hover:border-primary hover:bg-transparent hover:text-primary hover:transition-all duration-300 ease-in-out"
               >
                 <svg
                   className="me-1 -ms-1 w-5 h-5"

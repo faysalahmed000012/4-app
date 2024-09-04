@@ -1,16 +1,15 @@
-// @ts-nocheck
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://4-client-2.vercel.app/",
-    credentials: true,
+    baseUrl: "http://localhost:5000/",
+    credentials: "include",
   }),
   tagTypes: ["product"],
   endpoints: (builder) => ({
     getAllProducts: builder.query({
-      query: (queries: any) => {
+      query: (queries) => {
         const params = new URLSearchParams();
         params.append("limit", queries[0].limit);
         // for (const query of queries) {
