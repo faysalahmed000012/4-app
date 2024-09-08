@@ -2,7 +2,7 @@
 import { useGetAllProductsQuery } from "../../redux/api/baseApi";
 
 const Gallery = () => {
-  const { data } = useGetAllProductsQuery([{ limit: 12 }]);
+  const { data } = useGetAllProductsQuery([{ name: "limit", value: 12 }]);
   return (
     <div>
       <h1 className="text-4xl font-semibold my-6">Showcase</h1>

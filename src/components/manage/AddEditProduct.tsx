@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { Modal } from "flowbite-react";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import {
   useAddProductMutation,
   useUpdateProductMutation,
@@ -10,41 +11,55 @@ const AddEditProduct = ({ isEditMode, product }) => {
   const [addProduct] = useAddProductMutation();
   const [editProduct] = useUpdateProductMutation();
   const [openModal, setOpenModal] = useState(false);
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const formProps = Object.fromEntries(formData);
     const image = formData.get("image");
     const data = new FormData();
     data.append("image", image!);
-
-    fetch(
-      "https://api.imgbb.com/1/upload?key=d3d1d74972071318836f76df468d8eb3",
-      {
-        method: "POST",
-        body: data,
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.data) {
-          if (isEditMode) {
-            const update = {
-              ...formProps,
-              images: [data?.data?.display_url],
-              _id: product._id,
-            };
-            editProduct(update);
-          } else {
-            const newProduct = {
-              ...formProps,
-              images: [data?.data?.display_url],
-            };
-            addProduct(newProduct);
-          }
-        }
-        setOpenModal(false);
+    console.log(formProps);
+    if (isEditMode && image?.size == 0) {
+      editProduct({
+        ...formProps,
+        _id: product._id,
       });
+      toast.success("Product edited Successfully");
+      setOpenModal(false);
+    } else {
+      fetch(
+        "https://api.imgbb.com/1/upload?key=d3d1d74972071318836f76df468d8eb3",
+        {
+          method: "POST",
+          body: data,
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.data) {
+            if (isEditMode) {
+              const images = data?.data?.display_url;
+              const update = {
+                ...formProps,
+                images: [images],
+                _id: product._id,
+              };
+              console.log(update);
+              editProduct(update);
+              toast.success("Product Edited Successfully");
+            } else {
+              const newProduct = {
+                ...formProps,
+                images: [data?.data?.display_url],
+              };
+              addProduct(newProduct);
+              toast.success("Product Added Successfully");
+            }
+          }
+          setOpenModal(false);
+        });
+    }
   };
   return (
     <>
@@ -71,7 +86,7 @@ const AddEditProduct = ({ isEditMode, product }) => {
       ) : (
         <button
           onClick={() => setOpenModal(true)}
-          className="bg-green-500 px-6 py-3 text-white rounded-lg font-semibold"
+          className="bg-primary px-6 py-3 rounded-lg font-semibold"
         >
           Add Product
         </button>
@@ -102,6 +117,7 @@ const AddEditProduct = ({ isEditMode, product }) => {
                     type="text"
                     name="name"
                     id="name"
+                    style={{ textTransform: "capitalize" }}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                     placeholder="Type product name"
                     required={true}
@@ -115,10 +131,12 @@ const AddEditProduct = ({ isEditMode, product }) => {
                     Price
                   </label>
                   <input
-                    defaultValue={product?.price}
+                    defaultValue={Number(product?.price?.toFixed(2))}
                     type="number"
                     name="price"
                     id="price"
+                    min={1}
+                    pattern="[+]?\d+(\.\d+)?"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                     placeholder="Price"
                     required={true}
@@ -139,6 +157,10 @@ const AddEditProduct = ({ isEditMode, product }) => {
                   >
                     <option selected>Select category</option>
                     <option value="plant">Plant</option>
+                    <option value="Outdoor Decor">Outdoor Decor</option>
+                    <option value="Plant Care Essentials">
+                      Plant Care Essentials
+                    </option>
                   </select>
                 </div>
                 <div className="col-span-2 sm:col-span-1">
@@ -153,6 +175,7 @@ const AddEditProduct = ({ isEditMode, product }) => {
                     type="number"
                     name="quantity"
                     id="quantity"
+                    min={1}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                     placeholder="Quantity"
                     required={true}
@@ -173,6 +196,25 @@ const AddEditProduct = ({ isEditMode, product }) => {
                     type="file"
                     name="image"
                     id="image"
+                  />
+                </div>
+                <div className="col-span-2 sm:col-span-1">
+                  <label
+                    htmlFor="rating"
+                    className="block mb-2 text-sm font-medium text-gray-900 "
+                  >
+                    Rating
+                  </label>
+                  <input
+                    defaultValue={product?.rating}
+                    type="number"
+                    name="rating"
+                    min={1}
+                    max={5}
+                    id="rating"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+                    placeholder="Rating out of 5"
+                    required={true}
                   />
                 </div>
                 <div className="col-span-2">

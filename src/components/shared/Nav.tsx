@@ -1,10 +1,12 @@
 import { Navbar } from "flowbite-react";
 import { Link, NavLink } from "react-router-dom";
+import { useAppSelector } from "../../redux/hooks";
 import Logo from "./Logo";
 
 export default function Nav() {
+  const cart = useAppSelector((state) => state.cart.products);
   return (
-    <Navbar fluid rounded className="bg-transparent ">
+    <Navbar fluid rounded className="z-10 shadow-sm rounded-lg bg-transparent">
       <Navbar.Brand>
         <Link to={"/"}>
           {" "}
@@ -13,13 +15,34 @@ export default function Nav() {
       </Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse>
-        <Navbar.Link href="#" active>
-          Home
-        </Navbar.Link>
+        <NavLink
+          className={({ isActive }) => (isActive ? "text-primary" : "inactive")}
+          to="/manage"
+        >
+          Manage
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? "text-primary" : "inactive")}
+          to="/products"
+        >
+          Products
+        </NavLink>
+        <div className="relative">
+          {cart.length > 0 && (
+            <div className="bg-primary text-white rounded-full w-6 h-6 absolute -top-4 left-8 flex items-center justify-center">
+              {cart.length}
+            </div>
+          )}
 
-        <NavLink to="/manage">Manage</NavLink>
-        <NavLink to="/products">Products</NavLink>
-        <NavLink to="/cart">Cart</NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "text-primary" : "inactive"
+            }
+            to="/cart"
+          >
+            Cart
+          </NavLink>
+        </div>
       </Navbar.Collapse>
     </Navbar>
   );

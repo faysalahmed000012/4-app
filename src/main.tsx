@@ -7,6 +7,7 @@ import "./index.css";
 import Cart from "./pages/Cart.tsx";
 import Home from "./pages/Home.tsx";
 import Management from "./pages/Management.tsx";
+import Order from "./pages/Order.tsx";
 import ProductDetail from "./pages/ProductDetail.tsx";
 import Products from "./pages/Products.tsx";
 import { store } from "./redux/store.ts";
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/order",
+        element: <Order />,
       },
     ],
   },

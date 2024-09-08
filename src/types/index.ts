@@ -11,5 +11,14 @@ export type TProduct = {
 };
 
 export type TCartItem = TProduct & {
-  number: number;
+  orderQuantity: number;
+};
+
+export type TOrder = {
+  items: TCartItem[];
+  user: {
+    name: string;
+    phone: string;
+    address: string;
+  };
 };

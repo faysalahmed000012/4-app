@@ -7,7 +7,7 @@ import Nav from "./components/shared/Nav";
 
 function App() {
   return (
-    <>
+    <div className="mt-4 mx-[20px] md:mx-[80px]">
       <Nav />
       <Outlet />
       <div className="mt-auto">
@@ -25,7 +25,7 @@ function App() {
         />
         <Footer />
       </div>
-    </>
+    </div>
   );
 }
 

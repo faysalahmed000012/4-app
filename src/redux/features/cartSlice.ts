@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 import { TCartItem } from "../../types";
 
 interface CartState {
@@ -14,14 +15,23 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
+      console.log(action.payload);
       const product = state.products.find(
         (product) => product._id === action.payload._id
       );
+      console.log(product);
       if (product) {
-        product.number = product.number + 1;
-        product.price = product.price * product.number;
+        if (product.quantity <= product.orderQuantity) {
+          console.log(product.quantity, product.orderQuantity);
+          toast.error("You Cannot order more than available quantity");
+          return;
+        }
+        product.orderQuantity = product.orderQuantity + 1;
+        product.price = product.price * product.orderQuantity;
+        toast.success("Product Added To Cart");
       } else {
-        state.products.push({ ...action.payload, number: 1 });
+        state.products.push({ ...action.payload, orderQuantity: 1 });
+        toast.success("Product Added To Cart");
       }
     },
     removeFromCart: (state, action) => {
@@ -29,8 +39,11 @@ export const cartSlice = createSlice({
         (product) => product._id !== action.payload._id
       );
     },
+    clearCart: (state) => {
+      state.products = [];
+    },
   },
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, clearCart } = cartSlice.actions;
 export default cartSlice.reducer;

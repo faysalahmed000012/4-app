@@ -1,6 +1,18 @@
 # Green Horizon
 
-live link:
+A nursery website where users can order plant and plant based items, create and edit them.
+
+## Description
+
+Green Horizon is an online nursery website with a dream to make the world green. In this website, users can buy plant and plant based items for a fair price with cash on delivery system and create/edit product.
+
+### Features
+
+- Create Product
+- Edit Product
+- Advanced Filtering
+- Search and Pagination
+- Redux Toolkit and RTK Query
 
 ### Technology
 
