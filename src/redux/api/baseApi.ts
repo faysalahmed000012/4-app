@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/",
+    baseUrl: "https://assignment-4-server-five.vercel.app/",
     credentials: "include",
   }),
   tagTypes: ["product"],
@@ -73,6 +73,7 @@ export const baseApi = createApi({
           body: data,
         };
       },
+      invalidatesTags: ["product"],
     }),
   }),
 });

@@ -19,7 +19,7 @@ const AddEditProduct = ({ isEditMode, product }) => {
     const image = formData.get("image");
     const data = new FormData();
     data.append("image", image!);
-    console.log(formProps);
+
     if (isEditMode && image?.size == 0) {
       editProduct({
         ...formProps,
@@ -45,7 +45,7 @@ const AddEditProduct = ({ isEditMode, product }) => {
                 images: [images],
                 _id: product._id,
               };
-              console.log(update);
+
               editProduct(update);
               toast.success("Product Edited Successfully");
             } else {
@@ -212,6 +212,7 @@ const AddEditProduct = ({ isEditMode, product }) => {
                     min={1}
                     max={5}
                     id="rating"
+                    pattern="[+]?\d+(\.\d+)?"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                     placeholder="Rating out of 5"
                     required={true}

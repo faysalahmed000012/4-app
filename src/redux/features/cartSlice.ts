@@ -15,14 +15,12 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      console.log(action.payload);
       const product = state.products.find(
         (product) => product._id === action.payload._id
       );
-      console.log(product);
+
       if (product) {
         if (product.quantity <= product.orderQuantity) {
-          console.log(product.quantity, product.orderQuantity);
           toast.error("You Cannot order more than available quantity");
           return;
         }

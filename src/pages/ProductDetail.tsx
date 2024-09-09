@@ -39,7 +39,7 @@ const ProductDetail = () => {
           </p>
           <p className="flex items-center justify-start gap-3">
             {" "}
-            <FaStar /> Ratings : {data?.data?.ratings}/5
+            <FaStar /> Ratings : {data?.data?.rating?.toFixed(1)}/5
           </p>
           <p className="flex items-center justify-start gap-3">
             {" "}
@@ -56,6 +56,7 @@ const ProductDetail = () => {
           <div className="flex gap-6">
             {data?.data && (
               <button
+                disabled={data?.data?.quantity == 0}
                 onClick={handleAddToCart}
                 className="bg-primary rounded-lg w-32 h-12 block font-semibold hover:bg-transparent hover:border hover:border-primary  hover:transition-all hover:duration-300"
               >

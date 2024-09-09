@@ -24,8 +24,7 @@ const Trending = () => {
     filter,
   ];
 
-  const { data, error, isLoading } = useGetAllProductsQuery(queries);
-  console.log(data, error, isLoading);
+  const { data } = useGetAllProductsQuery(queries);
   const totalPage = data?.data?.meta?.totalPage || 1;
   const onPageChange = (page: number) => setPage(page);
   return (

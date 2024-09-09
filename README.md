@@ -28,18 +28,17 @@ Please follow the below instructions to run different branches of this repositor
 
 2. Clone this repository
    ```sh
-   git clone https://github.com/faysalahmed000012/Level-2-Assignemnt-3.git
+   git clone https://github.com/faysalahmed000012/4-app.git
    ```
 3. Go to the cloned project directory
    ```sh
-   cd Level-2-Assignemnt-3
+   cd 4-app
    ```
 4. Run these commands (Make sure typescript is installed in your computer)
    ```sh
    npm install
-   tsc
    ```
 5. Now Run the project
    ```sh
-   node  ./dist/server.js
+   npm run dev
    ```
